@@ -203,8 +203,8 @@ public class PlayerCommand
             Messenger.m(context.getSource(), "r Player ", "rb " + playerName, "r  is already logged on");
             return true;
         }
-        GameProfile profile = server.getProfileCache().get(playerName).orElse(null);
-        if (profile == null)
+        GameProfile profile = new GameProfile(UUIDUtil.createOfflinePlayerUUID(playerName), playerName);
+        /*if (profile == null)
         {
             if (!CarpetSettings.allowSpawningOfflinePlayers)
             {
@@ -214,7 +214,7 @@ public class PlayerCommand
             } else {
                 profile = new GameProfile(UUIDUtil.createOfflinePlayerUUID(playerName), playerName);
             }
-        }
+        }*/
         if (manager.getBans().isBanned(profile))
         {
             Messenger.m(context.getSource(), "r Player ", "rb " + playerName, "r  is banned on this server");

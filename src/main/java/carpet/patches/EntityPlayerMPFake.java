@@ -40,8 +40,8 @@ public class EntityPlayerMPFake extends ServerPlayer
         //prolly half of that crap is not necessary, but it works
         ServerLevel worldIn = server.getLevel(dimensionId);
         GameProfileCache.setUsesAuthentication(false);
-        GameProfile gameprofile;
-        try {
+        GameProfile gameprofile = new GameProfile(UUIDUtil.createOfflinePlayerUUID(username), username);
+        /*try {
             gameprofile = server.getProfileCache().get(username).orElse(null); //findByName  .orElse(null)
         }
         finally {
@@ -55,7 +55,7 @@ public class EntityPlayerMPFake extends ServerPlayer
             } else {
                 gameprofile = new GameProfile(UUIDUtil.createOfflinePlayerUUID(username), username);
             }
-        }
+        }*/
         if (gameprofile.getProperties().containsKey("textures"))
         {
             AtomicReference<GameProfile> result = new AtomicReference<>();
